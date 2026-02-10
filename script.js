@@ -19,6 +19,51 @@ function createHearts() {
     }, 300);
 }
 
+// Discord Webhook Configuration
+// Replace with your Discord webhook URL
+// To create a webhook: Server Settings > Integrations > Webhooks > New Webhook
+const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1470899307031957535/A6j-n13bA3H7M4L0wNMA88qfIDOTtop-G5qJoFcH55Jh-eq6IoegOb1oQW04J9T35-Ob';
+
+// Send notification to Discord
+async function sendDiscordNotification(title, body) {
+    if (!DISCORD_WEBHOOK_URL || DISCORD_WEBHOOK_URL === 'https://discord.com/api/webhooks/1470899307031957535/A6j-n13bA3H7M4L0wNMA88qfIDOTtop-G5qJoFcH55Jh-eq6IoegOb1oQW04J9T35-Ob') {
+        console.error('Discord webhook URL not configured');
+        return;
+    }
+    
+    const timestamp = new Date().toLocaleString();
+    
+    const payload = {
+        embeds: [{
+            title: title,
+            description: body,
+            color: 16738740, // Pink color
+            timestamp: new Date().toISOString(),
+            footer: {
+                text: `Response received at ${timestamp}`
+            }
+        }]
+    };
+    
+    try {
+        await fetch(DISCORD_WEBHOOK_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload)
+        });
+        console.log('Discord notification sent successfully');
+    } catch (error) {
+        console.error('Failed to send Discord notification:', error);
+    }
+}
+
+// Show notification
+function showNotification(title, body) {
+    sendDiscordNotification(title, body);
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     createHearts();
@@ -75,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Yes button click
     yesBtn.addEventListener('click', () => {
+        showNotification('Valentine\'s Day Response 💕', 'She said YES! 🎉💖✨');
         proposalContainer.classList.add('hidden');
         celebration.classList.remove('hidden');
         createConfetti();
@@ -109,7 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // If they somehow click No
-    noBtn.addEventListener('click', () => {
+    noBtshowNotification('Valentine\'s Day Response', 'Nice try, but the "No" button doesn\'t work! 😊💕');
+        n.addEventListener('click', () => {
         alert('The "No" button is currently out of service! 😊💕 Please click "Yes" instead! ❤️');
     });
 });
