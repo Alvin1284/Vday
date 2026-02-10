@@ -128,13 +128,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // No button - make it run away
     let noBtnClickCount = 0;
-    noBtn.addEventListener('mouseover', () => {
+    
+    const moveNoButton = () => {
         noBtnClickCount++;
         const maxX = window.innerWidth - noBtn.offsetWidth - 100;
         const maxY = window.innerHeight - noBtn.offsetHeight - 100;
         
-        const randomX = Math.random() * maxX;
-        const randomY = Math.random() * maxY;
+        const randomX = Math.random() * Math.max(maxX, 100);
+        const randomY = Math.random() * Math.max(maxY, 100);
         
         noBtn.style.position = 'fixed';
         noBtn.style.left = randomX + 'px';
@@ -152,11 +153,18 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (noBtnClickCount === 7) {
             noBtn.textContent = 'Please? 🥺';
         }
+    };
+    
+    // Handle both mouse and touch events for "No" button
+    noBtn.addEventListener('mouseover', moveNoButton);
+    noBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        moveNoButton();
     });
     
     // If they somehow click No
-    noBtshowNotification('Valentine\'s Day Response', 'Nice try, but the "No" button doesn\'t work! 😊💕');
-        n.addEventListener('click', () => {
+    noBtn.addEventListener('click', () => {
+        showNotification('Valentine\'s Day Response', 'Nice try, but the "No" button doesn\'t work! 😊💕');
         alert('The "No" button is currently out of service! 😊💕 Please click "Yes" instead! ❤️');
     });
 });
