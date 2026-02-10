@@ -23,16 +23,53 @@ function createHearts() {
 document.addEventListener('DOMContentLoaded', () => {
     createHearts();
     
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
     const nextBtn = document.getElementById('nextBtn');
+    const continueBtn = document.getElementById('continueBtn');
     const mainContainer = document.getElementById('mainContainer');
+    const timelineContainer = document.getElementById('timelineContainer');
     const proposalContainer = document.getElementById('proposalContainer');
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
     const celebration = document.getElementById('celebration');
     
-    // Next button click
+    let musicPlaying = false;
+    
+    // Music toggle
+    musicToggle.addEventListener('click', () => {
+        if (musicPlaying) {
+            bgMusic.pause();
+            musicToggle.textContent = '🔇';
+            musicToggle.classList.remove('playing');
+        } else {
+            bgMusic.play().catch(e => console.log('Audio play failed:', e));
+            musicToggle.textContent = '🔊';
+            musicToggle.classList.add('playing');
+        }
+        musicPlaying = !musicPlaying;
+    });
+    
+    // Auto-play music on first interaction
+    const startMusic = () => {
+        if (!musicPlaying) {
+            bgMusic.play().catch(e => console.log('Audio play failed:', e));
+            musicToggle.textContent = '🔊';
+            musicToggle.classList.add('playing');
+            musicPlaying = true;
+        }
+    };
+    
+    // Next button click - show timeline
     nextBtn.addEventListener('click', () => {
+        startMusic();
         mainContainer.classList.add('hidden');
+        timelineContainer.classList.remove('hidden');
+    });
+    
+    // Continue button click - show proposal
+    continueBtn.addEventListener('click', () => {
+        timelineContainer.classList.add('hidden');
         proposalContainer.classList.remove('hidden');
     });
     

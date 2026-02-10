@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    <button class="music-toggle" id="musicToggle" title="Toggle Music">
+        🔊
+    </button>
+    
     <div class="hearts-container" id="heartsContainer"></div>
     
     <div class="container" id="mainContainer">
@@ -14,6 +22,58 @@
             <h1 class="title" id="title">Happy Valentine's Day! 💝</h1>
             <p class="message" id="message">I have something special to ask you...</p>
             <button class="btn-next" id="nextBtn">Click Here</button>
+        </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <div class="timeline-container hidden" id="timelineContainer">
+        <div class="timeline-content">
+            <h2 class="timeline-title">Our Beautiful Journey Together 💕</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>First Concert Together 🎵</h3>
+                        <p class="timeline-date">25th July</p>
+                        <p>You looked amazing and your smile hypnotised me the whole time we were together.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>Your Smile 😊</h3>
+                        <p class="timeline-date">The smile that captured my heart</p>
+                        <p>Your smile lights up my world and I want to see it every day.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>Growing Closer 💭</h3>
+                        <p class="timeline-date">Every conversation, every laugh</p>
+                        <p>Getting to know you has been the greatest adventure of my life.</p>
+                        <p>I have enjoyed our times together and I have had the best time of my life</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>Falling for You 💖</h3>
+                        <p class="timeline-date">When I realized</p>
+                        <p>I knew you were more than just someone special - you were everything.</p>
+                        <p>With every interaction I get to fall for you more you came in my life at the perfect time and added colour to it</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <h3>Today 🎁</h3>
+                        <p class="timeline-date">February 11 2026</p>
+                        <p>And now, I have a very important question to ask you...</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-continue" id="continueBtn">Continue ❤️</button>
         </div>
     </div>
 
@@ -38,7 +98,8 @@
             </div>
             <p class="celebration-message">You just made me the happiest person in the world! ❤️</p>
             <div class="love-letter">
-                <p>Thank you for being amazing, wonderful, and everything I could ever wish for.</p>
+                <p>Thank you for being loving, supportive, and everything I could ever wish for.</p>
+                <p>Words are not enough to express how I feel about you</p>
                 <p>Here's to our journey together! 💑</p>
             </div>
         </div>
